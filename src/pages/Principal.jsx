@@ -2,6 +2,7 @@ import { useState, useEffect, Fragment, createContext } from "react";
 import conseguirPersonajes from "../helpers/Api";
 import Characters from "../components/Characters";
 import Pagination from "../components/Pagination";
+import Loader from "../components/Loader";
 export const ElementContext = createContext();
 
 export default function Principal() {
@@ -15,6 +16,13 @@ export default function Principal() {
 			setPages(res.data.info.pages);
 			setLoading(false);
 		});
+	}
+
+
+	if(loading) {
+		return(
+			<Loader />
+		)
 	}
 
 	useEffect(() => {
